@@ -62,7 +62,6 @@ def displayverticalline(data, colm, norm):
 #displayhorizontalline(data, 0, True)
 #displayverticalline(data, 20, True)
 
-
 # choose random sample set of columns + rows
 #rows, colms = sample(data, 5)
 

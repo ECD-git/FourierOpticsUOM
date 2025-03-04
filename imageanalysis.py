@@ -26,13 +26,13 @@ def sample(data, samplesize):
 def abs2(x):
     return x.real**2 + x.imag**2
 
-def openimage(name):
+def openimage(name: str):
     im = Image.open(name, 'r')
     pix_vals = list(im.getdata(band=1))
     return unflatten(pix_vals,im.width)
 
-def displayhorizontalline(data, row, norm):
-    fig = plt.figure(figsize=(10,5))
+def displayhorizontalline(data: list, row: int, norm: bool):
+    fig = plt.figure(figsize=(15,5))
     if(row > data.shape[1]):
         print("ERROR: line out of image range")
     else:
@@ -42,8 +42,8 @@ def displayhorizontalline(data, row, norm):
             plt.plot(data[row,:])
         plt.show()
 
-def displayverticalline(data, colm, norm):
-    fig = plt.figure(figsize=(10,5))
+def displayverticalline(data: list, colm: int, norm: bool):
+    fig = plt.figure(figsize=(15,5))
     if(colm > data.shape[0]):
         print("ERROR: line out of image range")
     else:

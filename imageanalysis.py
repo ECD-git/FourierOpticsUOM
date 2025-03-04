@@ -28,7 +28,7 @@ def normalise(array):
 def sample(data, samplesize):
     '''
     '''
-    return random.sample(range(0,data.shape[0]), samplesize), random.sample(range(0,data.shape[1]), samplesize)
+    return random.sample(range(0,data.shape[1]), samplesize), random.sample(range(0,data.shape[0]), samplesize)
 
 def abs2(x):
     '''
@@ -68,12 +68,19 @@ def displayverticalline(data: list, colm: int, norm: bool):
             plt.plot(data[:,colm])
         plt.show()
     
-def get_period(inpdata: list):
+def get_period(inpdata: list, full: bool):
     '''
+    Warning, untested on not strictly horizontal or vertical data
     '''
-    indexes = sp.signal.find_peaks(inpdata, height=(np.mean(inpdata), inpdata.max()))
+    indexes = sp.signal.find_peaks(inpdata, height=(inpdata.max() - (inpdata.max()-inpdata.min())*0.5, inpdata.max()))
     peaks = inpdata[indexes[0]]
-    print(indexes[0][0])
     period = (indexes[0][-1]-indexes[0][0])/len(indexes[0])
-    print(period)
-    return indexes[0], peaks
+    if(full):
+        return period, indexes[0], peaks;
+    else:
+        return period;
+
+def stderrormean(oneDdata):
+    temp = np.sum(np.pow(np.mean(oneDdata) - oneDdata, 2))
+    temp = np.pow(len(oneDdata)-1, -1, dtype=float)*temp
+    return np.pow(temp, 0.5) / np.pow(len(oneDdata), 0.5)

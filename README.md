@@ -1,5 +1,5 @@
 # FourierOpticsUOM
-Some code developed in conjunction with the Fourier Optics lab experiment at UOM, third year physics.
+A small module of code developed in conjunction with the Fourier Optics lab experiment at UOM, third year physics.
 Developed for personal use, more functions and their explanations will be added here over time.
 Requres numpy, scipy, PIL, matplotlib, random, all of which are readily available on Spyder,
 where it is reccomended to run this program
